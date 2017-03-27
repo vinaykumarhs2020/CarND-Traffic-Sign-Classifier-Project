@@ -13,7 +13,7 @@ As we can see, some classes like 'dangerous curve' have much fewer samples compa
 
 ### Preprocessing
 
-Several methods are used to preprocess the images. Initially, images are normalized using `StandardScaler` module from `sklearn`. This is trained with X_train and fit to all other data.
+Several methods are used to preprocess the images. Initially, images are normalized using `StandardScaler` module from `sklearn`. This is trained with X_train and fit to all other data. Data normalization makes the problem well conditioned by making features centered around mean and have unit variance.  This process helped improve accuracy on training as well as validation data.
 
 Additionally, as a way of data augmentation, I also applied following methods on the train images:
 
@@ -48,7 +48,14 @@ Last column represents the one used for final submission and performed with augm
 
 ### Test Data
 
-I downloaded data from  http://benchmark.ini.rub.de/Dataset/GTSRB_Final_Test_Images.zip and following picture shows the images I used for testing. Interestingly, they were in various sizes, so I had to resize them before using for testing. Some of the images are really dark and are a good test for the network prediction accuracy. I achieved a __70%__ prediction accuracy on these images.
+I downloaded data from  http://benchmark.ini.rub.de/Dataset/GTSRB_Final_Test_Images.zip and following picture shows the images I used for testing. Interestingly, they were in various sizes, so I had to resize them before using for testing. Some of the images are really dark and are a good test for the network prediction accuracy. 
+
+I achieved a __70%__ prediction accuracy on these images. But, on the original test set, I achieved __91.9%__ accuracy. This clearly indicates that, my model does behave well on the data it was trained with and not so well well on the completely different data. This problem can be addressed with following ways:
+
+- Train the model with more images (This would need collecting more data)
+- Preprcess the images to create more data samples for training. Along with methods I performed above, I could adjust the brightness, and translate the images to include image shifts.
+- Search with a window based technique. This is because, the test data set doesn't cover the whole image width/height, as it was in the training set. So a sliding window technique would improeve the test accuracy.
+
 
 Image with actual labels:
 
