@@ -23,6 +23,14 @@ Additionally, as a way of data augmentation, I also applied following methods on
 
 With these techniques, I ended up with 104397 additional training samples, making the total training set of 139196 images. These helped me achieve about ~0.9-1.2% accuracy on the validation set with same model.
 
+Original Image: 
+
+![orig](images/orig.png)
+
+Augmentation Example:
+
+![proc](images/proc.png)
+
 ### Model Architecture & Training
 
 I used the LeNet architecture discussed in lecture. This has a 2 convolutional layers with max_pool layers and 3 fully connected layers at the end. I used softmax cross entropy loss with Adam optimizer for the project. As a major part of the project, I did try different parameters for learning rate, batch size and learning rates. Below table represents my observations on validation dataset:
